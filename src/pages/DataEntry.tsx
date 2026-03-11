@@ -32,9 +32,13 @@ export default function DataEntry() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.ventas > 0 && formData.empleados > 0) {
+      console.log('Setting datosEmpresa:', formData);
       setDatosEmpresa(formData);
       setCurrentStep(1);
-      navigate('/benchmark');
+      // Wait for state update before navigating
+      setTimeout(() => {
+        navigate('/benchmark', { replace: true });
+      }, 50);
     }
   };
 

@@ -19,6 +19,8 @@ export default function Benchmark() {
   const navigate = useNavigate();
   const { datosEmpresa, ratios, diagnostico, comparativa, benchmark } = useApp();
 
+  console.log('Benchmark render:', { datosEmpresa, ratios, diagnostico, comparativa: comparativa?.length });
+
   const chartData = useMemo(() => ({
     labels: ['Tu Empresa', 'Promedio Pymes', 'Top 25% ROI'],
     datasets: [
@@ -67,7 +69,7 @@ export default function Benchmark() {
     }
   };
 
-  if (!datosEmpresa || !ratios || !diagnostico) {
+  if (!datosEmpresa || !ratios || !diagnostico || !comparativa?.length) {
     return (
       <div className="page">
         <div className="empty-state">
@@ -213,6 +215,7 @@ export default function Benchmark() {
 
       <div className="table-section">
         <h3>Tabla Comparativa Detallada</h3>
+        {comparativa && comparativa.length > 0 ? (
         <table className="benchmark-table">
           <thead>
             <tr>
@@ -225,7 +228,7 @@ export default function Benchmark() {
             </tr>
           </thead>
           <tbody>
-            {comparativa.map((row, index) => (
+            {comparativa.map((row: any, index: number) => (
               <tr key={index}>
                 <td>{row.indicador}</td>
                 <td className="value-cell">{row.empresa.toFixed(2)}</td>
@@ -241,6 +244,9 @@ export default function Benchmark() {
             ))}
           </tbody>
         </table>
+        ) : (
+          <p>Cargando datos de comparativa...</p>
+        )}
       </div>
 
       {diagnostico.recomendaciones.length > 0 && (

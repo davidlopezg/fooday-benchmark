@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, useMemo, type ReactNode } from 'react';
 import type { DatosEmpresa, RatiosCalculados, BenchmarkData, Diagnostico, ComparativaBenchmark } from '../types';
 import benchmarkData from '../data/benchmark.json';
 import { calcularRatios, obtenerDiagnostico, generarComparativa } from '../utils/calculos';
@@ -17,6 +17,8 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
+const BENCHMARK = benchmarkData as unknown as BenchmarkData;
+
 export function AppProvider({ children }: { children: ReactNode }) {
   const [datosEmpresa, setDatosEmpresa] = useState<DatosEmpresa | null>(null);
   const [ratios, setRatios] = useState<RatiosCalculados | null>(null);
@@ -24,7 +26,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [comparativa, setComparativa] = useState<ComparativaBenchmark[]>([]);
   const [currentStep, setCurrentStep] = useState(0);
 
-  const benchmark = benchmarkData as unknown as BenchmarkData;
+  const benchmark = useMemo(() => BENCHMARK, []);
 
   useEffect(() => {
     const saved = localStorage.getItem('fooday-datos');
@@ -39,7 +41,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    if (datosEmpresa) {
+    if (datosEmpresa && datosEmpresa.ventas > 0) {
       localStorage.setItem('fooday-datos', JSON.stringify(datosEmpresa));
       const ratiosCalc = calcularRatios(datosEmpresa);
       setRatios(ratiosCalc);
