@@ -19,8 +19,6 @@ export default function Benchmark() {
   const navigate = useNavigate();
   const { datosEmpresa, ratios, diagnostico, comparativa, benchmark } = useApp();
 
-  console.log('Benchmark render:', { datosEmpresa, ratios, diagnostico, comparativa: comparativa?.length });
-
   const chartData = useMemo(() => {
     if (!benchmark?.estructuraIngresosGastos) {
       return { labels: [], datasets: [] };
