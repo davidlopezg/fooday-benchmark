@@ -1,0 +1,150 @@
+{
+  "version": "2024",
+  "fuente": "Elaboración propia a partir de datos del sector de Restauración y puestos de comida CNAE 56.1",
+  "ultimaActualizacion": "2024",
+  "estructuraIngresosGastos": {
+    "grandesMedianas": {
+      "importeNetoNegocios": 97.81,
+      "otrosIngresosExplotacion": 2.19,
+      "consumosExplotacion": 29.21,
+      "margenBruto": 70.79,
+      "otrosGastosExplotacion": 31.31,
+      "gastosPersonal": 28.44,
+      "amortizaciones": 5.53,
+      "baii": 5.51,
+      "resultadoEjercicio": 1.98
+    },
+    "pymes": {
+      "importeNetoNegocios": 99.00,
+      "otrosIngresosExplotacion": 1.00,
+      "consumosExplotacion": 36.09,
+      "margenBruto": 63.91,
+      "otrosGastosExplotacion": 21.35,
+      "gastosPersonal": 31.20,
+      "amortizaciones": 2.53,
+      "baii": 8.83,
+      "resultadoEjercicio": 6.69
+    },
+    "top25Roi": {
+      "importeNetoNegocios": 99.35,
+      "otrosIngresosExplotacion": 0.65,
+      "consumosExplotacion": 35.59,
+      "margenBruto": 64.41,
+      "otrosGastosExplotacion": 18.98,
+      "gastosPersonal": 28.38,
+      "amortizaciones": 1.79,
+      "baii": 18.23,
+      "resultadoEjercicio": 14.33
+    }
+  },
+  "productividad": {
+    "grandesMedianas": {
+      "ventasPorEmpleado": 83.93,
+      "gastoPersonalPorEmpleado": 23.87,
+      "beneficioNetoPorEmpleado": 1.66
+    },
+    "pymes": {
+      "ventasPorEmpleado": 99.12,
+      "gastoPersonalPorEmpleado": 30.93,
+      "beneficioNetoPorEmpleado": 6.63
+    },
+    "top25Roi": {
+      "ventasPorEmpleado": 111.60,
+      "gastoPersonalPorEmpleado": 29.42,
+      "beneficioNetoPorEmpleado": 11.50
+    }
+  },
+  "liquidez": {
+    "grandesMedianas": 0.74,
+    "pymes": 1.68,
+    "top25Roi": 1.85
+  },
+  "umbrales": {
+    "foodCost": {
+      "saludable": 35,
+      "alerta": 36,
+      "critico": 38
+    },
+    "gastoPersonal": {
+      "saludable": 32,
+      "alerta": 33,
+      "critico": 35
+    },
+    "liquidez": {
+      "saludable": 1.3,
+      "alerta": 1.0,
+      "critico": 0.8
+    },
+    "ventasPorEmpleado": {
+      "objetivo": 95,
+      "excelente": 111
+    },
+    "margenNeto": {
+      "saludable": 6,
+      "bueno": 10,
+      "excelente": 14
+    }
+  },
+  "factoresRiesgo": [
+    {
+      "factor": "Incremento SMI",
+      "impacto": "Elevado",
+      "incremento": "4.4% anual",
+      "mitigacion": "Digitalización del servicio y optimización de turnos inteligentes"
+    },
+    {
+      "factor": "Inflación Materia Prima",
+      "impacto": "Moderado-Alto",
+      "incremento": "7.8% acumulado",
+      "mitigacion": "Ingeniería de menú y platos con ingredientes de temporada"
+    },
+    {
+      "factor": "Sostenibilidad Legal",
+      "impacto": "Obligatorio",
+      "incremento": "Ley Desperdicio",
+      "mitigacion": "Auditorías de basura y colaboraciones locales para residuos"
+    },
+    {
+      "factor": "Hábitos de Consumo",
+      "impacto": "Cambio estructural",
+      "incremento": "Brunch/Tardeo",
+      "mitigacion": "Adaptación de horarios para maximizar horas valle"
+    }
+  ],
+  "recomendaciones": {
+    "foodCost": {
+      "urgente": [
+        "Revisión de escandallos y mermas",
+        "Auditoría de inventario",
+        "Negociación con proveedores"
+      ],
+      "medio": [
+        "Ingeniería de menú (matriz BCG)",
+        "Platos con ingredientes de temporada",
+        "Predicción de demanda con IA"
+      ]
+    },
+    "personal": {
+      "urgente": [
+        "Implementación de SOPs",
+        "Optimización de turnos"
+      ],
+      "medio": [
+        "Formación cruzada (cross-training)",
+        "Sistemas KDS y comandero digital",
+        "Plan de retención de talento"
+      ]
+    },
+    "liquidez": {
+      "urgente": [
+        "Revisión del ciclo de caja",
+        "Negociación de plazos con proveedores"
+      ],
+      "medio": [
+        "Fondo de reserva (3 meses gastos)",
+        "Gestión de tesorería",
+        "Eficiencia energética"
+      ]
+    }
+  }
+}
