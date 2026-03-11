@@ -175,22 +175,24 @@ export default function Informe() {
               </tr>
             </thead>
             <tbody>
-              {comparativa.map((row, i) => (
+              {comparativa && comparativa.map((row: any, i: number) => (
+                row && row.indicador ? (
                 <tr key={i}>
                   <td>{row.indicador}</td>
-                  <td className="text-right">{row.empresa.toFixed(2)}</td>
-                  <td className="text-right">{row.promedioPymes.toFixed(2)}</td>
-                  <td className="text-right">{row.top25Roi.toFixed(2)}</td>
+                  <td className="text-right">{row.empresa?.toFixed(2) || '0.00'}</td>
+                  <td className="text-right">{row.promedioPymes?.toFixed(2) || '0.00'}</td>
+                  <td className="text-right">{row.top25Roi?.toFixed(2) || '0.00'}</td>
                 </tr>
+                ) : null
               ))}
             </tbody>
           </table>
         </div>
 
-        {diagnostico.recomendaciones.length > 0 && (
+        {diagnostico?.recomendaciones && diagnostico.recomendaciones.length > 0 && (
           <div className="report-section">
             <h3>4. Recomendaciones</h3>
-            {diagnostico.recomendaciones.map((rec, i) => (
+            {diagnostico.recomendaciones.map((rec: any, i: number) => (
               <div key={i} className="report-recommendation">
                 <div className="rec-header">
                   <span className={`rec-type-badge ${rec.tipo}`}>

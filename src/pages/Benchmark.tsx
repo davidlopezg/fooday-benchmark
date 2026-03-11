@@ -21,38 +21,43 @@ export default function Benchmark() {
 
   console.log('Benchmark render:', { datosEmpresa, ratios, diagnostico, comparativa: comparativa?.length });
 
-  const chartData = useMemo(() => ({
-    labels: ['Tu Empresa', 'Promedio Pymes', 'Top 25% ROI'],
-    datasets: [
-      {
-        label: 'Food Cost (%)',
-        data: [
-          ratios?.foodCost || 0,
-          benchmark.estructuraIngresosGastos.pymes.consumosExplotacion,
-          benchmark.estructuraIngresosGastos.top25Roi.consumosExplotacion
-        ],
-        backgroundColor: ['#3B82F6', '#94A3B8', '#22C55E']
-      },
-      {
-        label: 'Margen Bruto (%)',
-        data: [
-          ratios?.margenBruto || 0,
-          benchmark.estructuraIngresosGastos.pymes.margenBruto,
-          benchmark.estructuraIngresosGastos.top25Roi.margenBruto
-        ],
-        backgroundColor: ['#3B82F6', '#94A3B8', '#22C55E']
-      },
-      {
-        label: 'Gastos Personal (%)',
-        data: [
-          ratios?.gastoPersonal || 0,
-          benchmark.estructuraIngresosGastos.pymes.gastosPersonal,
-          benchmark.estructuraIngresosGastos.top25Roi.gastosPersonal
-        ],
-        backgroundColor: ['#3B82F6', '#94A3B8', '#22C55E']
-      }
-    ]
-  }), [ratios, benchmark]);
+  const chartData = useMemo(() => {
+    if (!benchmark?.estructuraIngresosGastos) {
+      return { labels: [], datasets: [] };
+    }
+    return {
+      labels: ['Tu Empresa', 'Promedio Pymes', 'Top 25% ROI'],
+      datasets: [
+        {
+          label: 'Food Cost (%)',
+          data: [
+            ratios?.foodCost || 0,
+            benchmark.estructuraIngresosGastos.pymes.consumosExplotacion,
+            benchmark.estructuraIngresosGastos.top25Roi.consumosExplotacion
+          ],
+          backgroundColor: ['#3B82F6', '#94A3B8', '#22C55E']
+        },
+        {
+          label: 'Margen Bruto (%)',
+          data: [
+            ratios?.margenBruto || 0,
+            benchmark.estructuraIngresosGastos.pymes.margenBruto,
+            benchmark.estructuraIngresosGastos.top25Roi.margenBruto
+          ],
+          backgroundColor: ['#3B82F6', '#94A3B8', '#22C55E']
+        },
+        {
+          label: 'Gastos Personal (%)',
+          data: [
+            ratios?.gastoPersonal || 0,
+            benchmark.estructuraIngresosGastos.pymes.gastosPersonal,
+            benchmark.estructuraIngresosGastos.top25Roi.gastosPersonal
+          ],
+          backgroundColor: ['#3B82F6', '#94A3B8', '#22C55E']
+        }
+      ]
+    };
+  }, [ratios, benchmark]);
 
   const chartOptions = {
     responsive: true,
@@ -228,19 +233,21 @@ export default function Benchmark() {
             </tr>
           </thead>
           <tbody>
-            {comparativa.map((row: any, index: number) => (
+            {comparativa && comparativa.map((row: any, index: number) => (
+              row && row.indicador ? (
               <tr key={index}>
                 <td>{row.indicador}</td>
-                <td className="value-cell">{row.empresa.toFixed(2)}</td>
-                <td>{row.promedioPymes.toFixed(2)}</td>
-                <td>{row.top25Roi.toFixed(2)}</td>
+                <td className="value-cell">{row.empresa?.toFixed(2) || '0.00'}</td>
+                <td>{row.promedioPymes?.toFixed(2) || '0.00'}</td>
+                <td>{row.top25Roi?.toFixed(2) || '0.00'}</td>
                 <td className={row.gapPromedio > 0 ? 'gap-positive' : row.gapPromedio < 0 ? 'gap-negative' : ''}>
-                  {row.gapPromedio > 0 ? '+' : ''}{row.gapPromedio.toFixed(2)}
+                  {row.gapPromedio > 0 ? '+' : ''}{row.gapPromedio?.toFixed(2) || '0.00'}
                 </td>
                 <td className={row.gapTop25 > 0 ? 'gap-positive' : row.gapTop25 < 0 ? 'gap-negative' : ''}>
-                  {row.gapTop25 > 0 ? '+' : ''}{row.gapTop25.toFixed(2)}
+                  {row.gapTop25 > 0 ? '+' : ''}{row.gapTop25?.toFixed(2) || '0.00'}
                 </td>
               </tr>
+              ) : null
             ))}
           </tbody>
         </table>
