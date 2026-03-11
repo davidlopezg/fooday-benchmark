@@ -464,6 +464,12 @@ body {
   font-weight: 600;
 }
 
+.benchmark-table td.benchmark-pymes {
+  background-color: #f0f9ff;
+  color: var(--secondary);
+  font-weight: 500;
+}
+
 .gap-positive {
   color: var(--success);
   font-weight: 500;

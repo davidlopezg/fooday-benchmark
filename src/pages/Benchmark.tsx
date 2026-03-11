@@ -236,7 +236,7 @@ export default function Benchmark() {
               <tr key={index}>
                 <td>{row.indicador}</td>
                 <td className="value-cell">{row.empresa?.toFixed(2) || '0.00'}</td>
-                <td>{row.promedioPymes?.toFixed(2) || '0.00'}</td>
+                <td className="benchmark-pymes">{row.promedioPymes?.toFixed(2) || '0.00'}</td>
                 <td>{row.top25Roi?.toFixed(2) || '0.00'}</td>
                 <td className={row.gapPromedio > 0 ? 'gap-positive' : row.gapPromedio < 0 ? 'gap-negative' : ''}>
                   {row.gapPromedio > 0 ? '+' : ''}{row.gapPromedio?.toFixed(2) || '0.00'}
