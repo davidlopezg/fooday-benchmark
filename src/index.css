@@ -964,12 +964,57 @@ body {
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
-    position: relative;
+    position: fixed;
+    bottom: 0;
+    top: auto;
     height: auto;
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .sidebar-header {
+    display: none;
+  }
+  
+  .sidebar-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    width: 100%;
+    justify-content: space-around;
+  }
+  
+  .nav-item {
+    flex-direction: column;
+    padding: 8px 12px;
+    font-size: 10px;
+    gap: 2px;
+    margin: 0;
+  }
+  
+  .nav-label {
+    font-size: 10px;
+  }
+  
+  .nav-icon {
+    font-size: 20px;
+  }
+  
+  .nav-badge {
+    display: none;
+  }
+  
+  .sidebar-footer {
+    display: none;
   }
   
   .main-content {
     margin-left: 0;
+    margin-bottom: 70px;
     padding: 16px;
   }
   
@@ -977,15 +1022,211 @@ body {
     flex-direction: column;
   }
   
+  .page-header h2 {
+    font-size: 22px;
+  }
+  
+  .page-header p {
+    font-size: 14px;
+  }
+  
   .kpi-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .kpi-card {
+    padding: 16px;
+  }
+  
+  .kpi-value {
+    font-size: 24px;
+  }
+  
+  .form {
+    padding: 16px;
   }
   
   .form-grid {
     grid-template-columns: 1fr;
   }
   
+  .form-section h3 {
+    font-size: 14px;
+  }
+  
+  .form-group input {
+    padding: 14px;
+    font-size: 16px;
+  }
+  
+  .btn-primary {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    position: fixed;
+    bottom: 80px;
+    left: 16px;
+    right: 16px;
+    z-index: 1001;
+  }
+  
+  .ratios-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .ratio-card {
+    padding: 12px;
+  }
+  
+  .ratio-value {
+    font-size: 18px;
+  }
+  
+  .chart-section {
+    padding: 16px;
+  }
+  
+  .chart-container {
+    height: 250px;
+  }
+  
+  .table-section {
+    padding: 16px;
+    overflow-x: auto;
+  }
+  
+  .benchmark-table {
+    font-size: 12px;
+    min-width: 600px;
+  }
+  
+  .benchmark-table th,
+  .benchmark-table td {
+    padding: 8px;
+  }
+  
+  .recommendations-list {
+    gap: 8px;
+  }
+  
+  .recommendation-card {
+    padding: 16px;
+  }
+  
+  .rec-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .preset-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .btn-preset {
+    width: 100%;
+    padding: 12px;
+  }
+  
+  .simulation-controls {
+    padding: 16px;
+  }
+  
+  .slider-group {
+    margin-bottom: 16px;
+  }
+  
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .result-card {
+    padding: 16px;
+  }
+  
+  .result-values {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .result-arrow {
+    transform: rotate(90deg);
+  }
+  
+  .projection-table {
+    font-size: 12px;
+    min-width: 500px;
+  }
+  
   .report-container {
-    padding: 24px;
+    padding: 16px;
+  }
+  
+  .report-cover {
+    padding: 24px 0;
+  }
+  
+  .report-cover h1 {
+    font-size: 24px;
+  }
+  
+  .report-cover h2 {
+    font-size: 14px;
+  }
+  
+  .report-section {
+    margin-bottom: 24px;
+  }
+  
+  .report-section h3 {
+    font-size: 16px;
+  }
+  
+  .report-kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .report-kpi {
+    padding: 12px;
+  }
+  
+  .report-kpi .kpi-value {
+    font-size: 18px;
+  }
+  
+  .report-table {
+    font-size: 11px;
+    min-width: 500px;
+  }
+  
+  .report-actions {
+    position: fixed;
+    bottom: 80px;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background: var(--bg-main);
+  }
+  
+  .btn-download {
+    width: 100%;
+  }
+  
+  .page-actions {
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 100px;
+  }
+  
+  .page-actions button {
+    width: 100%;
+  }
+  
+  .empty-state {
+    padding: 32px 16px;
+  }
+  
+  .empty-state h2 {
+    font-size: 20px;
   }
 }
